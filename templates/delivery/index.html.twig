@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>Page pour les livraisons</h1>
+    </div>
+    <div class="row">
+        {% for deliveryResult in delivery %}
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ deliveryResult.name }}</h5>
+                        <p class="card-text">{{ deliveryResult.date | date('Y-m-d') }}</p>
+                        <a href="{{ path('delivery.show',{id : deliveryResult.id, slug:deliveryResult.slug}) }}" class="btn btn-primary">Consulter</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
